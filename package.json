@@ -1,0 +1,41 @@
+{
+  "name": "ios-clock",
+  "version": "0.1.0",
+  "description": "mac in windows project 1: ios clock",
+  "main": "main.js",
+  "scripts": {
+    "tsc": "tsc ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keepgo-studio/ios-clock.git"
+  },
+  "keywords": [
+    "electron",
+    "xstate",
+    "lit"
+  ],
+  "author": "keepgo.studio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keepgo-studio/ios-clock/issues"
+  },
+  "homepage": "https://github.com/keepgo-studio/ios-clock#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "electron": "^21.3.1",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "lit": "^2.4.1",
+    "prettier": "2.8.0",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.9.3",
+    "webpack": "^5.75.0"
+  },
+  "dependencies": {
+    "xstate": "^4.34.0"
+  }
+}

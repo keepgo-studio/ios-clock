@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "CommonJS",
+    "target": "es6",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "rootDir": "./",
+    "outDir": "../dist",
+    "noEmitOnError": true,
+    "typeRoots": [ 
+      "../node_modules/@types",
+      "./types"
+    ],
+    "removeComments": true,
+    "alwaysStrict": true,
+    "experimentalDecorators": true,
+    
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    
+    "baseUrl": "./",
+    "paths": {
+      "@client/*": ["./app/client/*"],
+      "@server/*": ["./app/server/*"]
+    }
+  },
+
+  "include": ["./"],
+  "exclude": [
+    "node_modules",
+    "./**/*.test.ts",
+  ]
+ }
