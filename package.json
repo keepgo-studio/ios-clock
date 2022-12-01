@@ -2,12 +2,12 @@
   "name": "ios-clock",
   "version": "0.1.0",
   "description": "mac in windows project 1: ios clock",
-  "main": "main.js",
   "scripts": {
     "watch-electron": "electron dist/main.js",
     "watch-gulp": "gulp watch",
     "watch-browser-sync": "gulp browser-sync",
-    "start": "gulp build&&concurrently \"npm:watch-*\""
+    "start": "gulp build&&concurrently \"npm:watch-*\" --kill-others",
+    "lint": "eslint ./src/**/*.ts"
   },
   "repository": {
     "type": "git",

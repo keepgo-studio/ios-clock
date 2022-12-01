@@ -33,7 +33,7 @@ const esBuilds = {
 const nodeBuilds = {
   all: () =>
     gulp
-      .src(["src/main.ts", "src/**/*.preload.ts"])
+      .src(["src/main.ts", "src/ps.ts", "src/**/*.preload.ts"])
       .pipe(nodeProject())
       .pipe(gulp.dest("dist/")),
 };
@@ -67,7 +67,5 @@ gulp.task("watch", () => {
     .watch(["src/process/**/*.html"])
     .on("change", esBuilds.html);
 
-  gulp
-    .watch(["src/main", "src/process/**/*.preload.ts"])
-    .on("change", nodeBuilds.all);
+  gulp.watch(["src/process/**/*.preload.ts"]).on("change", nodeBuilds.all);
 });

@@ -1,30 +1,23 @@
-import { app, BrowserWindow } from 'electron';
-import * as path from 'path';
+import { app, BrowserWindow } from "electron";
+import { AppProcess, WorkerProcess } from "./ps";
 
-function createWindow () {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
-  })
-
-  void win.loadFile('./process/app/index.html');
-}
+const appPs = new AppProcess();
+const workerPs = new WorkerProcess();
 
 void app.whenReady().then(() => {
-  createWindow()
+  appPs.createWindow();
+  workerPs.createWindow();
 
-  app.on('activate', () => {
+  app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+      appPs.createWindow();
     }
-  })
-})
+  });
+});
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
+
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
   }
-})
+});
