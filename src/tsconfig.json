@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "baseUrl": "../",
+    "baseUrl": ".",
     "paths": {
-      "@assets/*": ["../assets/*"],
-      "@process/*": ["./process/*"]
+      "@assets/*": ["assets/*"],
+      "@process/*": ["process/*"]
     },
     "typeRoots": [ 
       "../node_modules/@types",

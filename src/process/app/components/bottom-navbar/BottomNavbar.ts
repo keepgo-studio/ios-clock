@@ -1,5 +1,8 @@
 import { html, LitElement, unsafeCSS } from "lit";
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { customElement } from "lit/decorators.js";
+
+import GlobeSvg from '@assets/globe.svg';
 
 import styles from './BottomNavbar.scss';
 
@@ -12,7 +15,9 @@ class Footer extends LitElement {
     return html`
       <footer>
         <ul class="nav-icon-list">
-          <li class="world-clocks"></li>
+          <li class="world-clocks">
+            ${unsafeHTML(GlobeSvg)}
+          </li>
 
           <li class="alram"></li>
 
