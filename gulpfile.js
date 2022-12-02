@@ -67,6 +67,10 @@ gulp.task("watch", () => {
     .on("change", esBuilds.app);
 
   gulp
+    .watch(["src/@types/**", "src/assets/**"])
+    .on("change", gulp.series(esBuilds.app, nodeBuilds.all));
+
+  gulp
     .watch(["src/process/worker/**/*.ts", "!src/process/**/*.preload.ts"])
     .on("change", esBuilds.worker);
   // prettier-ignore
@@ -74,5 +78,8 @@ gulp.task("watch", () => {
     .watch(["src/process/**/*.html"])
     .on("change", esBuilds.html);
 
-  gulp.watch(["src/process/**/*.preload.ts"]).on("change", nodeBuilds.all);
+  // prettier-ignore
+  gulp
+    .watch(["src/process/**/*.preload.ts"])
+    .on("change", nodeBuilds.all);
 });

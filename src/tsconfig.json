@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "baseUrl": ".",
+    "rootDir": "../",
+    "baseUrl": "../",
     "paths": {
-      "@assets/*": ["assets/*"],
-      "@process/*": ["process/*"]
+      "@assets/*": ["src/assets/*"],
+      "@process/*": ["src/process/*"],
+      "@widgets/*": ["src/process/app/components/widgets/*"]
     },
     "typeRoots": [ 
-      "../node_modules/@types",
+      "node_modules/@types",
       "@types"
     ],
     "removeComments": true,
@@ -20,6 +21,6 @@
   },
 
   "exclude": [
-    "../node_modules"
+    "node_modules"
   ]
 }

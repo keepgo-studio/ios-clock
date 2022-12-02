@@ -7,10 +7,10 @@ export class AppProcess {
 
   createWindow() {
     const win = new BrowserWindow({
-      width: 542,
       webPreferences: {
         preload: path.join(this._path, "app.preload.js"),
       },
+      minWidth: Math.ceil(270.719 * 1.25),
       resizable: false,
     });
 
@@ -19,12 +19,12 @@ export class AppProcess {
     win.setAspectRatio(this._ratio);
 
     win.removeMenu();
-    
+
     win.on("close", () => {
       // TODO: send information to worker by invoking app.preload.js
     });
 
-    win.webContents.openDevTools({ mode:"detach" });
+    win.webContents.openDevTools({ mode: "detach" });
   }
 }
 

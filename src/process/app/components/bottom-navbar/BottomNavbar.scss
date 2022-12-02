@@ -1,8 +1,19 @@
 @import url('/src/process/app/shared/global.scss');
 
 .nav-icon-list {
-  
+  display: flex;
+  justify-content: space-around;
+  font-family: "Apple SD Gothic Neo";
+  color: #7C7C7C;
+  fill: #7C7C7C;
+  text-align: center;
+  padding-bottom: 1rem;
   li {
     display: block;
+    cursor: pointer;
+
+    p { 
+      font-size: 11px;
+    }
   }
 }

@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "description": "mac in windows project 1: ios clock",
   "scripts": {
-    "watch-electron": "electron dist/main.js",
-    "watch-gulp": "gulp watch",
     "watch-browser-sync": "gulp browser-sync",
+    "watch-gulp": "gulp watch",
+    "watch-electron": "electron dist/main.js",
     "start": "gulp build&&concurrently \"npm:watch-*\" --kill-others",
     "lint": "eslint ./src/**/*.ts"
   },
