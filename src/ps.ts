@@ -11,16 +11,20 @@ export class AppProcess {
       webPreferences: {
         preload: path.join(this._path, "app.preload.js"),
       },
-      resizable: false
+      resizable: false,
     });
 
     void win.loadFile(path.join(this._path, "index.html"));
 
     win.setAspectRatio(this._ratio);
 
+    win.removeMenu();
+    
     win.on("close", () => {
       // TODO: send information to worker by invoking app.preload.js
     });
+
+    win.webContents.openDevTools({ mode:"detach" });
   }
 }
 

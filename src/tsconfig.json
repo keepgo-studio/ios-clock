@@ -1,6 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": ".",
+    "baseUrl": "../",
+    "paths": {
+      "@assets/*": ["../assets/*"],
+      "@process/*": ["./process/*"]
+    },
+    "typeRoots": [ 
+      "../node_modules/@types",
+      "@types"
+    ],
     "removeComments": true,
     "alwaysStrict": true,
     "experimentalDecorators": true,
@@ -9,4 +18,8 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
   },
+
+  "exclude": [
+    "../node_modules"
+  ]
 }

@@ -14,6 +14,7 @@ const esBuilds = {
       .src(["src/process/app/app.ts"])
       .pipe(named())
       .pipe(webpack(webpackConfig))
+      .on("error", console.log)
       .pipe(gulp.dest("dist/process/app/")),
 
   worker: () =>
@@ -21,6 +22,7 @@ const esBuilds = {
       .src(["src/process/worker/worker.ts"])
       .pipe(named())
       .pipe(webpack(webpackConfig))
+      .on("error", console.log)
       .pipe(gulp.dest("dist/process/worker/")),
 
   // prettier-ignore
@@ -55,6 +57,11 @@ gulp.task("browser-sync", (done) => {
 });
 
 gulp.task("watch", () => {
+  // prettier-ignore
+  gulp
+    .watch(["src/**/*.scss"])
+    .on("change", esBuilds.app);
+
   gulp
     .watch(["src/process/app/**/*.ts", "!src/process/**/*.preload.ts"])
     .on("change", esBuilds.app);

@@ -6,6 +6,7 @@
   },
   "include": [
     "main.ts",
+    "ps.ts",
     "**/*.preload.ts"
   ]
 }

@@ -17,6 +17,6 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   root: true,
-  ignorePatterns: ["/*", "!/src"],
+  ignorePatterns: ["/*", "!/src", "**/webpack.config.js"],
   plugins: ["@typescript-eslint"],
 };
