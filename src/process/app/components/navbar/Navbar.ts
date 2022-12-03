@@ -1,12 +1,20 @@
-import { html, css, LitElement, unsafeCSS } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { html, css, LitElement, unsafeCSS } from "lit";
+import { customElement } from "lit/decorators.js";
 
-import styles from './Navbar.scss';
+import SoundbarsSVG from "@assets/soundbars.svg";
+// TODO: has to map each other for internet and weather
+import InternetOnSVG from "@assets/internet.on.svg";
+import WeatherSVG from "@assets/weather/sunset.fill.svg";
+import styles from "./Navbar.scss";
 
-@customElement('app-navbar')
+import "@widgets/SVGWidget.styled";
+
+const ICON_WIDTH = 15;
+@customElement("app-navbar")
 class Navbar extends LitElement {
-
-  static styles = css`${unsafeCSS(styles)}`;
+  static styles = css`
+    ${unsafeCSS(styles)}
+  `;
 
   protected render(): unknown {
     return html`
@@ -15,17 +23,31 @@ class Navbar extends LitElement {
           <span class="hour">00</span>
           <span class="min">00</span>
         </div>
-  
-        
+
         <ul class="status-list">
           <li>
-            <!-- sound icon -->
+            <app-svg-widget
+              .width=${ICON_WIDTH}
+              .height=${ICON_WIDTH}
+              .data=${SoundbarsSVG}
+              .fill=${"#fff"}
+            ></app-svg-widget>
           </li>
           <li>
-            <!-- wifi icon -->
+            <app-svg-widget
+              .width=${ICON_WIDTH}
+              .height=${ICON_WIDTH}
+              .data=${InternetOnSVG}
+              .fill=${"#fff"}
+            ></app-svg-widget>
           </li>
           <li>
-            <!-- 알림 센터 icon -->
+            <app-svg-widget
+              .width=${ICON_WIDTH}
+              .height=${ICON_WIDTH}
+              .data=${WeatherSVG}
+              .fill=${"#fff"}
+            ></app-svg-widget>
           </li>
         </ul>
       </nav>

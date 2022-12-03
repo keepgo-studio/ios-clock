@@ -1,6 +1,5 @@
 import "./components/navbar/Navbar";
 import "./components/main/Main.styled";
-import "./components/bottom-navbar/BottomNavbar";
 
 (() => {
   const initStyle = document.createElement("style");
@@ -13,7 +12,7 @@ import "./components/bottom-navbar/BottomNavbar";
     main {
       height: 100vh;
       display: grid;
-      grid-template-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr;
       background-color: #000;
     }
   `;
@@ -27,30 +26,10 @@ import "./components/bottom-navbar/BottomNavbar";
       <app-navbar></app-navbar>
   
       <app-main></app-main>
-
-      <app-bottom-navbar></app-bottom-navbar>
   `;
 
   const appComponents = {
     navbar: root.querySelector("app-navbar"),
     main: root.querySelector("app-main"),
-    bottomNavbar: root.querySelector("app-bottom-navbar"),
   };
-
-  const idx = localStorage.getItem("bottom-navbar-index") || 0;
-
-  appComponents.bottomNavbar?.dispatchEvent(
-    new CustomEvent("from-app", { detail: { idx } })
-  );
-
-  window.addEventListener(
-    "from-bottom-navbar",
-    (e: CustomEvent<{ idx: number }>) => {
-      const _idx: number = e.detail.idx;
-
-      appComponents.main?.dispatchEvent(
-        new CustomEvent("from-app", { detail: { idx: _idx } })
-      );
-    }
-  );
 })();

@@ -16,7 +16,7 @@ const SVG_WIDTH = 24;
 @customElement("app-bottom-navbar")
 class Footer extends LitElement {
   @state()
-  idx = 0;
+  idx?: number;
 
   iconsMap = [
     {
@@ -42,25 +42,26 @@ class Footer extends LitElement {
   constructor() {
     super();
 
-    this.addEventListener("from-app", (e: CustomEvent<{ idx: number }>) => {
-      console.log(e.detail);
-      this.idx = e.detail.idx;
+    this.addEventListener("init", (e: CustomEvent<number>) => {
+      this.idx = e.detail;
     });
   }
 
-  sendToApp(currentIdx: number) {
+  clickHandler(currentIdx: number) {
     this.idx = currentIdx;
 
-    window.dispatchEvent(
-      new CustomEvent("from-bottom-navbar", {
-        detail: {
-          idx: this.idx,
-        },
+    this.dispatchEvent(
+      new CustomEvent("indexchanged", {
+        detail: currentIdx,
+        bubbles: false,
+        composed: true,
       })
     );
   }
 
   render() {
+    if (this.idx === undefined) return "";
+
     return html`
       <footer>
         <ul class="nav-icon-list">
@@ -68,7 +69,7 @@ class Footer extends LitElement {
             this.iconsMap,
             (item) => item.text,
             (item, _idx) => html`
-              <li @click=${() => this.sendToApp(_idx)}>
+              <li @click=${() => this.clickHandler(_idx)}>
                 <app-svg-widget
                   .width=${SVG_WIDTH}
                   .height=${SVG_WIDTH}

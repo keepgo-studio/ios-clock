@@ -22,6 +22,8 @@ export class AppProcess {
 
     win.on("close", () => {
       // TODO: send information to worker by invoking app.preload.js
+      // TODO(1): save bottom navbar index
+      // TODO(2): send stopwatch time/ alarm info/ timer time to worker
     });
 
     win.webContents.openDevTools({ mode: "detach" });
