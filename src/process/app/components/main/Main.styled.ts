@@ -1,8 +1,11 @@
-import { css, html, LitElement, PropertyValueMap } from "lit";
+import { css, html, LitElement } from "lit";
 import { customElement, query, state } from "lit/decorators.js";
+import { styleMap } from "lit/directives/style-map.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 import "./bottom-navbar/BottomNavbar";
 import "./timer/Timer";
+import "./stopwatch/Stopwatch";
 
 @customElement("app-main")
 class Main extends LitElement {
@@ -12,6 +15,8 @@ class Main extends LitElement {
   @query("app-bottom-navbar")
   BottomNavbar: Element;
 
+  modeList = ["app-world-clock", "app-alarm", "app-stopwatch", "app-timer"];
+
   static styles = css`
     section {
       width: 100%;
@@ -20,8 +25,12 @@ class Main extends LitElement {
       flex-direction: column;
     }
 
-    article {
+    .screen {
       flex-grow: 1;
+      padding: 0 16px;
+    }
+    .screen article {
+      height: 100%;
     }
   `;
 
@@ -42,16 +51,19 @@ class Main extends LitElement {
   render() {
     return html`
       <section>
-        <article>
-          <app-world-clock></app-world-clock>
-
-          <app-alarm></app-alarm>
-
-          <app-stopwatch></app-stopwatch>
-
-          <app-timer></app-timer>
-        </article>
-
+        <div class="screen">
+          ${this.modeList.map(
+            (tagName, _idx) => html`
+              <article
+                style=${styleMap({
+                  display: this.navbarIdx === _idx ? "block" : "none",
+                })}
+              >
+                ${unsafeHTML(`<${tagName}></${tagName}>`)}
+              </article>
+            `
+          )}
+        </div>
         <app-bottom-navbar
           @indexchanged=${this.indexChangedHandler}
         ></app-bottom-navbar>

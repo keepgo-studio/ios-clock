@@ -7,7 +7,7 @@ import InternetOnSVG from "@assets/internet.on.svg";
 import WeatherSVG from "@assets/weather/sunset.fill.svg";
 import styles from "./Navbar.scss";
 
-import "@widgets/SVGWidget.styled";
+import "@process/app/components/widgets/Svg.styled";
 
 const ICON_WIDTH = 15;
 @customElement("app-navbar")
@@ -26,28 +26,28 @@ class Navbar extends LitElement {
 
         <ul class="status-list">
           <li>
-            <app-svg-widget
+            <widget-svg
               .width=${ICON_WIDTH}
               .height=${ICON_WIDTH}
               .data=${SoundbarsSVG}
               .fill=${"#fff"}
-            ></app-svg-widget>
+            ></widget-svg>
           </li>
           <li>
-            <app-svg-widget
+            <widget-svg
               .width=${ICON_WIDTH}
               .height=${ICON_WIDTH}
               .data=${InternetOnSVG}
               .fill=${"#fff"}
-            ></app-svg-widget>
+            ></widget-svg>
           </li>
           <li>
-            <app-svg-widget
+            <widget-svg
               .width=${ICON_WIDTH}
               .height=${ICON_WIDTH}
               .data=${WeatherSVG}
               .fill=${"#fff"}
-            ></app-svg-widget>
+            ></widget-svg>
           </li>
         </ul>
       </nav>

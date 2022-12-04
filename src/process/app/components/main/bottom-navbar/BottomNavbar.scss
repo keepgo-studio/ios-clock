@@ -1,4 +1,5 @@
-@import url('/src/process/app/shared/global.scss');
+@import '/src/process/app/shared/global.scss';
+@import "/src/process/app/shared/variables.scss";
 
 .nav-icon-list {
   display: flex;
@@ -15,5 +16,10 @@
     p { 
       font-size: 11px;
     }
+  }
+
+  .selected {
+    color: $default-color-1;
+    fill: $default-color-1
   }
 }

@@ -2,8 +2,8 @@ import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
-@customElement("app-svg-widget")
-class SVGWidget extends LitElement {
+@customElement("widget-svg")
+class Svg extends LitElement {
   @property()
   fill = "#000";
 
@@ -22,6 +22,7 @@ class SVGWidget extends LitElement {
     return html`
       <style>
         svg {
+          display: inline-block;
           width: ${this.width}px;
           height: ${this.height}px;
           fill: ${this.fill};

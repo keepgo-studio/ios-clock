@@ -1,6 +1,73 @@
+@import "src/process/app/shared/global.scss";
+@import "src/process/app/shared/ios.scss";
+@import "src/process/app/shared/variables.scss";
+
 .container {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-auto-rows: 50% auto auto;
+  grid-auto-rows: 48% auto auto;
+  align-content: start;
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+
+    button {
+      cursor: pointer;
+      &:hover {
+        filter: brightness(92%);
+      }
+    }
+
+    .cancel {
+      background-color: $btn-cir-default;
+      color: $btn-cir-default-color;
+    }
+
+    .start {
+      background-color: $btn-cir-green;
+      color: $btn-cir-green-color;
+    }
+
+    .pause {
+      background-color: #302007;
+      color: #b87c2c;
+    }
+  }
+
+  .menu-container {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 15px 12px;
+    color: #fff;
+    font-size: 12px;
+    font-family: "Apple SD Gothic Neo";
+    background-color: rgba($btn-cir-default, 0.5);
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(92%);
+    }
+
+    p:nth-child(2) {
+      color: #98989E;
+
+// ----- codes for to set right arrow locate center vertically -----
+      display: flex;
+      align-items: center;
+      widget-svg {
+        display: inline-flex;
+// ------------------------------------------------------------
+
+        margin-left: 5px;
+      }
+    }
+
+  }
 }

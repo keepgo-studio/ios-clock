@@ -1,18 +1,27 @@
-import { html, LitElement } from "lit";
-import { customElement } from "lit/decorators.js";
+import { html, LitElement, PropertyValueMap } from "lit";
+import { customElement, state } from "lit/decorators.js";
 
-@customElement("app-bottom-up-sheet")
+@customElement("widget-bottom-up-sheet")
 class BottomUpSheet extends LitElement {
-  protected createRenderRoot(): Element | ShadowRoot {
-    return this;
+  @state()
+  show = false;
+
+  protected willUpdate(): void {
+    const appMain = document.querySelector("app-main") as HTMLElement;
+
+    if (this.show) {
+      appMain.style.transform = "scale(0.92)";
+    } else {
+      appMain.style.transform = "";
+    }
+  }
+
+  protected firstUpdated() {
+    const appMain = document.querySelector("app-main") as HTMLElement;
+    appMain.style.transition = "ease 300ms";
   }
 
   render() {
-    console.log(this.renderRoot.parentNode);
-    return html`
-      <section>
-        <slot></slot>
-      </section>
-    `;
+    return html` <slot></slot> `;
   }
 }

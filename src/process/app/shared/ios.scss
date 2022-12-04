@@ -1,0 +1,25 @@
+.ios-btn-cir {
+	font-family: "Apple SD Gothic Neo";
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 66px;
+	height: 66px;
+	border-radius: 50%;
+}
+.ios-btn-cir::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 58px;
+	height: 58px;
+	border-radius: 50%;
+	border: #000 solid 1.6px;
+}
+.ios-btn-disable {
+	cursor: not-allowed !important;
+	filter: brightness(50%) !important;
+}

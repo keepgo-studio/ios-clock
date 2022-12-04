@@ -1,7 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
-import { styleMap } from "lit/directives/style-map.js";
 
 import GlobeSVG from "@assets/globe.svg";
 import TimerSVG from "@assets/timer.svg";
@@ -9,7 +8,7 @@ import StopwatchSVG from "@assets/stopwatch.fill.svg";
 import AlarmSVG from "@assets/alarm.fill.svg";
 import styles from "./BottomNavbar.scss";
 
-import "@widgets/SVGWidget.styled";
+import "@widgets/Svg.styled";
 
 const SVG_WIDTH = 24;
 
@@ -69,20 +68,17 @@ class Footer extends LitElement {
             this.iconsMap,
             (item) => item.text,
             (item, _idx) => html`
-              <li @click=${() => this.clickHandler(_idx)}>
-                <app-svg-widget
+              <li
+                @click=${() => this.clickHandler(_idx)}
+                class=${this.idx === _idx ? "selected" : ""}
+              >
+                <widget-svg
                   .width=${SVG_WIDTH}
                   .height=${SVG_WIDTH}
                   .data=${item.svg}
-                  .fill=${this.idx === _idx ? "#F1A33B" : "inherit"}
-                ></app-svg-widget>
-                <p
-                  style=${styleMap({
-                    color: this.idx === _idx ? "#F1A33B" : "inherit",
-                  })}
-                >
-                  ${item.text}
-                </p>
+                  .fill=${"inherit"}
+                ></widget-svg>
+                <p>${item.text}</p>
               </li>
             `
           )}
