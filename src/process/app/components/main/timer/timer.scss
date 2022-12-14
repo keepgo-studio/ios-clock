@@ -6,8 +6,28 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-auto-rows: 48% auto auto;
+  grid-auto-rows: 48vh auto auto;
   align-content: start;
+
+  > section {
+    * {
+      transition: 300ms ease-in-out opacity;
+    }
+    ios-ui-picker {
+      opacity: 1;
+    }
+    .running-container {
+      opacity: 0;
+    }
+      &.running {
+        ios-ui-picker {
+          opacity: 0;
+        }
+        .running-container {
+          opacity: 1;
+        }
+      }
+  }
 
   .button-container {
     display: flex;
@@ -26,12 +46,12 @@
       color: $btn-cir-default-color;
     }
 
-    .start {
+    .start, .pause {
       background-color: $btn-cir-green;
       color: $btn-cir-green-color;
     }
 
-    .pause {
+    .running {
       background-color: #302007;
       color: #b87c2c;
     }
@@ -40,7 +60,7 @@
   .menu-container {
     margin-top: 20px;
     border-radius: 10px;
-    padding: 15px 12px;
+    padding: 15px 14px;
     color: #fff;
     font-size: 12px;
     font-family: "Apple SD Gothic Neo";
