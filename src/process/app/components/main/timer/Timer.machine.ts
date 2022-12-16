@@ -6,6 +6,25 @@ const TimerMachine =
     id: "timer_machine",
     predictableActionArguments: true,
     tsTypes: {} as import("./Timer.machine.typegen").Typegen0,
+    schema: {
+      context: {} as {
+        hour: number;
+        min: number;
+        sec: number;
+        siId: any;
+      },
+      events: {} as
+        | { type: "start"; numbers: Array<number> }
+        | { type: "resume" }
+        | { type: "stop" }
+        | { type: "cancel" },
+    },
+    context: {
+      hour: 0,
+      min: 0,
+      sec: 0,
+      siId: -1,
+    },
     states: {
       idle: {
         on: {
@@ -14,6 +33,31 @@ const TimerMachine =
       },
 
       running: {
+        entry: (context, event) => {
+          if (event.type !== "start") return;
+
+          context.hour = event.numbers[0];
+          context.min = event.numbers[1];
+          context.sec = event.numbers[2];
+
+          context.siId = setInterval(() => {
+            context.sec -= 1;
+
+            if (context.sec < 0) {
+              context.min -= 1;
+              context.sec = 0;
+            }
+
+            if (context.min < 0) {
+              context.hour -= 1;
+              context.min = 0;
+            }
+
+            if (context.hour === 0) {
+              clearInterval(context.siId);
+            }
+          }, 1000);
+        },
         on: {
           stop: "pause",
           cancel: "idle",

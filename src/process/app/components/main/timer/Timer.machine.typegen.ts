@@ -7,12 +7,14 @@ export interface Typegen0 {
   };
   invokeSrcNameMap: {};
   missingImplementations: {
-    actions: never;
+    actions: "actions2";
     delays: never;
     guards: never;
     services: never;
   };
-  eventsCausingActions: {};
+  eventsCausingActions: {
+    actions2: "resume" | "start";
+  };
   eventsCausingDelays: {};
   eventsCausingGuards: {};
   eventsCausingServices: {};

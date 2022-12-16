@@ -10,8 +10,6 @@ import styles from "./Timer.scss";
 import "@widgets/Dial";
 import "@widgets/BottomUpSheet";
 
-Picker.config("picker");
-
 const service = interpret(TimerMachine);
 
 @customElement("app-timer")
@@ -34,12 +32,14 @@ class Timer extends LitElement {
     super();
 
     service.onTransition((s) => (this._state = s)).start();
+
+    service.send("start");
+
+    Picker.config("picker");
   }
 
   getResultListener({ detail }: CustomEvent<Array<number>>) {
     this.timerNumbers = [...detail];
-
-    console.log(this.timerNumbers);
   }
 
   render() {
@@ -56,7 +56,28 @@ class Timer extends LitElement {
             @getresult=${this.getResultListener.bind(this)}
           ></ios-ui-picker>
 
-          <div class="running-container">running</div>
+          <div class="running-container">
+            <div
+              class="text-container
+                ${this.timerNumbers[0] > 0 ? "with-hour" : "without-hour"}
+                "
+            >
+              <span class="hour"
+                >${this.timerNumbers[0].toString().padStart(2, "0")}</span
+              >
+              <span class="min"
+                >${this.timerNumbers[1].toString().padStart(2, "0")}</span
+              >
+              <span class="sec"
+                >${this.timerNumbers[2].toString().padStart(2, "0")}</span
+              >
+            </div>
+
+            <svg class="progress">
+              <circle cx="50%" cy="50%" r="20vh" class="frame"></circle>
+              <circle cx="50%" cy="50%" r="20vh" class="bar"></circle>
+            </svg>
+          </div>
         </section>
 
         <div class="button-container">
